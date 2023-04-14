@@ -5,17 +5,19 @@
   let tempo = 100;
 
   const increase = () => {
-    tempo = tempo + 1;
+    if (tempo < 300) {
+      tempo = tempo + 1;
+    }
   };
 
   const decrease = () => {
-    tempo = tempo - 1;
+    if (tempo > 0) {
+      tempo = tempo - 1;
+    }
   };
 
-  const strokeEnter = (e) => {
-    if (e.keyCode === 13) {
-      tempo = e.target.value;
-    }
+  const editTempo = (e) => {
+    tempo = parseInt(e.target.value);
   };
 
   $: minim = Math.ceil(tempo) * 2 + 'ms';
@@ -30,7 +32,7 @@
 
 <div id="app">
   <h1 class="title">BPM to MS</h1>
-  <Input {tempo} {increase} {decrease} {strokeEnter} />
+  <Input {tempo} {increase} {decrease} {editTempo} />
   <Table
     {tempo}
     {minim}
