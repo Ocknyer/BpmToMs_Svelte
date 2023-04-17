@@ -20,14 +20,16 @@
     tempo = parseInt(e.target.value);
   };
 
-  $: minim = Math.ceil(tempo) * 2 + 'ms';
-  $: quarter = Math.ceil(tempo) + 'ms';
-  $: eighthNote = Math.ceil(tempo / 2) + 'ms';
-  $: eightDotted = Math.ceil(tempo / 3) + 'ms';
-  $: semiQuaver = Math.ceil(tempo / 4) + 'ms';
-  $: demiSemiQuaver = Math.ceil(tempo / 8) + 'ms';
-  $: hemidemiSemiQuaver = Math.ceil(tempo / 16) + 'ms';
-  $: oneHundredTwentyEight = Math.ceil(tempo / 32) + 'ms';
+  $: baseBPM = 60000 / tempo;
+
+  $: minim = Math.ceil(baseBPM) * 2 + 'ms';
+  $: quarter = Math.ceil(baseBPM) + 'ms';
+  $: eighthNote = Math.ceil(baseBPM / 2) + 'ms';
+  $: eightDotted = Math.ceil(baseBPM / 3) + 'ms';
+  $: semiQuaver = Math.ceil(baseBPM / 4) + 'ms';
+  $: demiSemiQuaver = Math.ceil(baseBPM / 8) + 'ms';
+  $: hemidemiSemiQuaver = Math.ceil(baseBPM / 16) + 'ms';
+  $: oneHundredTwentyEight = Math.ceil(baseBPM / 32) + 'ms';
 </script>
 
 <div id="app">
